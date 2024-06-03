@@ -25,4 +25,19 @@ public class VeterinarianController {
     public ResponseEntity<Veterinarian> getVeterinarianById(@PathVariable Integer id) {
         return service.getVeterinarianById(id);
     }
+
+    @PostMapping
+    public Veterinarian addVeterinarian(@RequestBody Veterinarian veterinarian) {
+        return service.addVeterinarian(veterinarian);
+    }
+
+    @PutMapping(path = "/{id}")
+    public Veterinarian modifyVeterinarian(@PathVariable Integer id, @RequestBody Veterinarian veterinarian) {
+        return service.modifyVeterinarian(id, veterinarian);
+    }
+
+    @DeleteMapping(path = "/{id}")
+    public void deleteVeterinarian(@PathVariable Integer id) {
+        service.deleteVeterinarianById(id);
+    }
 }
