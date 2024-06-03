@@ -21,6 +21,11 @@ public class AnimalController {
         return service.getAllAnimals();
     }
 
+    @GetMapping(path = "/{id}")
+    public ResponseEntity<Animal> getAnimalById(@PathVariable Integer id) {
+        return service.getAnimalById(id);
+    }
+
     @GetMapping(path = "/name/{name}")
     public List<Animal> getAnimalsByName(@PathVariable String name) {
         return service.getAnimalsByName(name);
