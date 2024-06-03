@@ -1,6 +1,7 @@
 package rs.nemamvebsajt.spring_test_project_2.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import rs.nemamvebsajt.spring_test_project_2.model.Animal;
 import rs.nemamvebsajt.spring_test_project_2.service.AnimalService;
@@ -18,6 +19,11 @@ public class AnimalController {
     @GetMapping
     public List<Animal> getAllAnimals() {
         return service.getAllAnimals();
+    }
+
+    @GetMapping(path = "/name/{name}")
+    public List<Animal> getAnimalsByName(@PathVariable String name) {
+        return service.getAnimalsByName(name);
     }
 
     @PostMapping

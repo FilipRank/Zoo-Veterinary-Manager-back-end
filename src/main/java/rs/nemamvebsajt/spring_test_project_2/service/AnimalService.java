@@ -21,6 +21,10 @@ public class AnimalService {
         return repository.findAll();
     }
 
+    public List<Animal> getAnimalsByName(String name) {
+        return repository.findByName(name);
+    }
+
     public Animal addAnimal(Animal newAnimal) {
         Animal animal = new Animal();
         animal.setName(newAnimal.getName());
