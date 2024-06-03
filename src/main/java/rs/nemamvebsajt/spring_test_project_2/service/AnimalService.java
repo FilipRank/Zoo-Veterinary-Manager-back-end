@@ -9,7 +9,6 @@ import rs.nemamvebsajt.spring_test_project_2.repository.AnimalRepository;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -45,6 +44,10 @@ public class AnimalService {
         return repository.save(animal);
     }
 
+    public void deleteAnimalById(Integer id) {
+        repository.deleteById(id);
+    }
+
 //    public void softDeleteAnimal(Integer id) {
 //        Animal animal = repository.findById(id)
 //                .orElseThrow(() -> new ResourceNotFoundException("No such animal with id: " + id));
@@ -53,9 +56,5 @@ public class AnimalService {
 //
 //        repository.save(animal);
 //    }
-
-    public void deleteAnimalById(Integer id) {
-        repository.deleteById(id);
-    }
 
 }

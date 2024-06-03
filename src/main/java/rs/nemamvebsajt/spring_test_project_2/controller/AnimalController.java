@@ -36,14 +36,15 @@ public class AnimalController {
         return service.modifyAnimalById(id, animal);
     }
 
+    @DeleteMapping(path = "/{id}")
+    public void deleteAnimal(@PathVariable Integer id) {
+        service.deleteAnimalById(id);
+    }
+
 //    @DeleteMapping(path = "/{id}")
 //    public void softDeleteAnimal(@PathVariable Integer id) {
 //        service.softDeleteAnimal(id);
 //    }
 
-    @DeleteMapping(path = "/{id}")
-    public void deleteAnimal(@PathVariable Integer id) {
-        service.deleteAnimalById(id);
-    }
 
 }
