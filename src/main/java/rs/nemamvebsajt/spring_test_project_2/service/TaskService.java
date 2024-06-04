@@ -29,4 +29,8 @@ public class TaskService {
         return repository.save(task);
     }
 
+    public void deleteTask(Integer id) {
+        repository.deleteById(id);
+    }
+
 }

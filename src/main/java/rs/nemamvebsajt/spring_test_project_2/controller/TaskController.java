@@ -26,4 +26,9 @@ public class TaskController {
         return service.addTask(task, animalId);
     }
 
+    @DeleteMapping(path = "/{id}")
+    public void deleteTask(@PathVariable Integer id) {
+        service.deleteTask(id);
+    }
+
 }
