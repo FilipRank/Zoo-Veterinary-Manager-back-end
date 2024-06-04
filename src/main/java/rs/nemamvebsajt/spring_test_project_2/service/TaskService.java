@@ -1,6 +1,7 @@
 package rs.nemamvebsajt.spring_test_project_2.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import rs.nemamvebsajt.spring_test_project_2.model.Task;
 import rs.nemamvebsajt.spring_test_project_2.repository.AnimalRepository;
@@ -17,6 +18,10 @@ public class TaskService {
 
     public List<Task> getAllTasks() {
         return repository.findAll();
+    }
+
+    public ResponseEntity<Task> getTaskById(Integer id) {
+        return ResponseEntity.of(repository.findById(id));
     }
 
     public Task addTask(Task newTask, Integer animalId) {

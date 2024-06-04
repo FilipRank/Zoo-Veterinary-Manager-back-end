@@ -42,8 +42,8 @@ public class VeterinarianController {
         service.deleteVeterinarianById(id);
     }
 
-    @PutMapping(path = "/addtask/{id}")
-    public Veterinarian addTaskToVeterinarian(@PathVariable Integer id, @RequestBody Task task) {
-        return service.addTaskToVeterinarian(id, task);
-    }
+//    @PutMapping(path = "/addtask/{id}")
+//    public Veterinarian addTaskToVeterinarian(@PathVariable Integer id, @RequestBody Task task) {
+//        return service.addTaskToVeterinarian(id, task);
+//    }
 }

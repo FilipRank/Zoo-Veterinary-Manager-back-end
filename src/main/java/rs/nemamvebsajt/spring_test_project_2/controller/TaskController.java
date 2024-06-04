@@ -21,6 +21,11 @@ public class TaskController {
         return service.getAllTasks();
     }
 
+    @GetMapping(path = "/{id}")
+    public ResponseEntity<Task> getTaskById(@PathVariable Integer id) {
+        return service.getTaskById(id);
+    }
+
     @PostMapping(path = "/animal/{animalId}")
     public Task addTaskWithAnimal(@RequestBody Task task, @PathVariable Integer animalId) {
         return service.addTask(task, animalId);

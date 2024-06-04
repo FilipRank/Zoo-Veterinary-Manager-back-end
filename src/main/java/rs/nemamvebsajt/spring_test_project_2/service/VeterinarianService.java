@@ -16,6 +16,7 @@ import java.util.Optional;
 public class VeterinarianService {
 
     private final VeterinarianRepository repository;
+    private final TaskService taskService;
 
     public List<Veterinarian> getAllVeterinarians() {
         return repository.findAll();
@@ -46,11 +47,8 @@ public class VeterinarianService {
         repository.deleteById(id);
     }
 
-    public Veterinarian addTaskToVeterinarian(Integer id, Task task) {
-        Veterinarian veterinarian = repository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("No such veterinarian with id: " + id));
-        veterinarian.getTasks().add(task);
-        return repository.save(veterinarian);
-    }
+//    public Veterinarian addTaskToVeterinarian(Integer veterinarianId, Integer taskId) {
+//
+//    }
 
 }
