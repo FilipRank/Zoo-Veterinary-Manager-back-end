@@ -3,6 +3,7 @@ package rs.nemamvebsajt.spring_test_project_2.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import rs.nemamvebsajt.spring_test_project_2.error.ResourceNotFoundException;
 import rs.nemamvebsajt.spring_test_project_2.model.Task;
 import rs.nemamvebsajt.spring_test_project_2.repository.AnimalRepository;
 import rs.nemamvebsajt.spring_test_project_2.repository.TaskRepository;
@@ -22,6 +23,17 @@ public class TaskService {
 
     public ResponseEntity<Task> getTaskById(Integer id) {
         return ResponseEntity.of(repository.findById(id));
+    }
+
+    public Task modifyTask(Task newTask, Integer id, Integer animalId) {
+        Task task = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("No such task with id: " + id));
+        task.setName(newTask.getName());
+        task.setSummary(newTask.getSummary());
+        task.setAnimal(animalService.getAnimalById(animalId).getBody());
+        task.setExpectedStartTime(newTask.getExpectedStartTime());
+        task.setExpectedEndTime(newTask.getExpectedEndTime());
+        return repository.save(task);
     }
 
     public Task addTask(Task newTask, Integer animalId) {

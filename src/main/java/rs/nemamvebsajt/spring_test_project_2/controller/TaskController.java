@@ -26,6 +26,11 @@ public class TaskController {
         return service.getTaskById(id);
     }
 
+    @PutMapping(path = "{id}/animal/{animalId}")
+    public Task modifyTask(@RequestBody Task task, @PathVariable Integer id, @PathVariable Integer animalId) {
+        return service.modifyTask(task, id, animalId);
+    }
+
     @PostMapping(path = "/animal/{animalId}")
     public Task addTaskWithAnimal(@RequestBody Task task, @PathVariable Integer animalId) {
         return service.addTask(task, animalId);
