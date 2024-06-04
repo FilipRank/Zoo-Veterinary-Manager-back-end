@@ -1,7 +1,10 @@
 package rs.nemamvebsajt.spring_test_project_2.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import rs.nemamvebsajt.spring_test_project_2.error.ResourceNotFoundException;
 import rs.nemamvebsajt.spring_test_project_2.model.Animal;
 import rs.nemamvebsajt.spring_test_project_2.repository.AnimalRepository;
@@ -18,6 +21,10 @@ public class AnimalService {
 
     public List<Animal> getAllAnimals() {
         return repository.findAll();
+    }
+
+    public ResponseEntity<Animal> getAnimalById(Integer id) {
+        return ResponseEntity.of(repository.findById(id));
     }
 
     public List<Animal> getAnimalsByName(String name) {

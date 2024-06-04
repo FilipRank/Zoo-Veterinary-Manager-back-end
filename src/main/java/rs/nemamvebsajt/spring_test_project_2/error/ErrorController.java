@@ -21,6 +21,7 @@ public class ErrorController {
         model.setName(e.getClass().getSimpleName());
         model.setMessage(e.getMessage());
         model.setPath(request.getContextPath());
+        logger.error(e.getMessage());
         return model;
     }
 
