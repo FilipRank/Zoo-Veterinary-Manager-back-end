@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import rs.nemamvebsajt.spring_test_project_2.error.ResourceNotFoundException;
+import rs.nemamvebsajt.spring_test_project_2.model.Task;
 import rs.nemamvebsajt.spring_test_project_2.model.Veterinarian;
 import rs.nemamvebsajt.spring_test_project_2.repository.VeterinarianRepository;
 
@@ -43,6 +44,13 @@ public class VeterinarianService {
 
     public void deleteVeterinarianById(Integer id) {
         repository.deleteById(id);
+    }
+
+    public Veterinarian addTaskToVeterinarian(Integer id, Task task) {
+        Veterinarian veterinarian = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("No such veterinarian with id: " + id));
+        veterinarian.getTasks().add(task);
+        return repository.save(veterinarian);
     }
 
 }

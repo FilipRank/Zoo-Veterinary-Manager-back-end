@@ -1,10 +1,8 @@
 package rs.nemamvebsajt.spring_test_project_2.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import rs.nemamvebsajt.spring_test_project_2.model.Task;
 import rs.nemamvebsajt.spring_test_project_2.service.TaskService;
 
@@ -21,6 +19,11 @@ public class TaskController {
     @GetMapping
     public List<Task> getAllTasks() {
         return service.getAllTasks();
+    }
+
+    @PostMapping(path = "/animal/{animalId}")
+    public Task addTaskWithAnimal(@RequestBody Task task, @PathVariable Integer animalId) {
+        return service.addTask(task, animalId);
     }
 
 }

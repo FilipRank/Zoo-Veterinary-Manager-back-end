@@ -23,7 +23,7 @@ public class AnimalService {
         return repository.findAll();
     }
 
-    public ResponseEntity<Animal> getAnimalById(@PathVariable Integer id) {
+    public ResponseEntity<Animal> getAnimalById(Integer id) {
         return ResponseEntity.of(repository.findById(id));
     }
 

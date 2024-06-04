@@ -3,6 +3,7 @@ package rs.nemamvebsajt.spring_test_project_2.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import rs.nemamvebsajt.spring_test_project_2.model.Task;
 import rs.nemamvebsajt.spring_test_project_2.model.Veterinarian;
 import rs.nemamvebsajt.spring_test_project_2.service.VeterinarianService;
 
@@ -39,5 +40,10 @@ public class VeterinarianController {
     @DeleteMapping(path = "/{id}")
     public void deleteVeterinarian(@PathVariable Integer id) {
         service.deleteVeterinarianById(id);
+    }
+
+    @PutMapping(path = "/addtask/{id}")
+    public Veterinarian addTaskToVeterinarian(@PathVariable Integer id, @RequestBody Task task) {
+        return service.addTaskToVeterinarian(id, task);
     }
 }
