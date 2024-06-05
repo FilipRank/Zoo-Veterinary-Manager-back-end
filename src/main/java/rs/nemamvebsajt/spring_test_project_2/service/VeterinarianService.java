@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import rs.nemamvebsajt.spring_test_project_2.error.ResourceNotFoundException;
 import rs.nemamvebsajt.spring_test_project_2.model.Task;
 import rs.nemamvebsajt.spring_test_project_2.model.Veterinarian;
+import rs.nemamvebsajt.spring_test_project_2.repository.TaskRepository;
 import rs.nemamvebsajt.spring_test_project_2.repository.VeterinarianRepository;
 
 import java.util.List;
@@ -47,8 +48,18 @@ public class VeterinarianService {
         repository.deleteById(id);
     }
 
-//    public Veterinarian addTaskToVeterinarian(Integer veterinarianId, Integer taskId) {
-//
-//    }
+    public Veterinarian assignTaskToVeterinarian(Integer veterinarianId, Integer taskId) {
+        Veterinarian veterinarian = repository.findById(veterinarianId)
+                .orElseThrow(() -> new ResourceNotFoundException("No such veterinarian with id: " + veterinarianId));
+        veterinarian.getTasks().add(taskService.getTaskById(taskId).getBody());
+        return repository.save(veterinarian);
+    }
+
+    public Veterinarian unassignTaskFromVeterinarian(Integer veterinarianId, Integer taskId) {
+        Veterinarian veterinarian = repository.findById(veterinarianId)
+                .orElseThrow(() -> new ResourceNotFoundException("No such veterinarian with id: " + veterinarianId));
+        veterinarian.getTasks().remove(taskService.getTaskById(taskId).getBody());
+        return repository.save(veterinarian);
+    }
 
 }
