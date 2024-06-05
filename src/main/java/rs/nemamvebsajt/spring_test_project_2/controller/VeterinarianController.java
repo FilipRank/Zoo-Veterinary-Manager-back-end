@@ -37,6 +37,18 @@ public class VeterinarianController {
         return service.modifyVeterinarian(id, veterinarian);
     }
 
+    @PutMapping(path = "{veterinarianId}/task/{taskId}")
+    public Veterinarian assignTaskToVeterinarian(
+            @PathVariable Integer veterinarianId, @PathVariable Integer taskId) {
+        return service.assignTaskToVeterinarian(veterinarianId, taskId);
+    }
+
+    @DeleteMapping(path = "{veterinarianId}/task/{taskId}")
+    public Veterinarian unassignTaskFromVeterinarian(
+            @PathVariable Integer veterinarianId, @PathVariable Integer taskId) {
+        return service.unassignTaskFromVeterinarian(veterinarianId, taskId);
+    }
+
     @DeleteMapping(path = "/{id}")
     public void deleteVeterinarian(@PathVariable Integer id) {
         service.deleteVeterinarianById(id);
